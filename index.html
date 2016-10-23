@@ -1,40 +1,224 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Buscar Juegos</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="screen" title="no title">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Paguina web de nuevas técnicas de programacion">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>⭐ PowerGames Revenge</title>
+
+
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" >
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <link rel="icon"        href="http://icons.iconarchive.com/icons/ph03nyx/super-mario/128/Mushroom-Boo-icon.png">
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="css/material.min.css">
+    <link rel="stylesheet"  href="css/styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
   </head>
   <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
+      <div class="pgamesr-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="pgamesr-title mdl-layout-title">
+            <img class="pgamesr-logo-image" src="images/pgamesr-logo.png">
+          </span>
+          <div class="pgamesr-header-spacer mdl-layout-spacer"></div>
+          <div class="pgamesr-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+              <i class="fa fa-search"></i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search-field" placeholder="buscar">
+            </div>
+          </div>
 
-
-    <div class="jumbotron">
-      <h1 class="display-3">Extracción de API</h1>
-      <p class="lead">PUCE -  Nuevas Técnicas de programación</p>
-      <hr class="my-2">
-      <p>Busca un juego por su título.</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="https://www.igdb.com/" role="button">IGDB</a>
-      </p>
-    </div>
-    <div class="container">
-
-        <div class="form-group">
-          <label for="juego">Ingresa el título de un juego</label>
-          <input type="text" class="form-control form-control-lg" id="juego" aria-describedby="juegoHelp" placeholder="Mortal Combat" autofocus="">
-          <small id="juegoHelp" class="form-text text-muted">Como llamas o conoces un videojuego.</small>
+          <div class="pgamesr-navigation-container">
+            <nav class="pgamesr-navigation mdl-navigation">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">mis juegos</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">amigos</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">prestamos</a>
+            </nav>
+          </div>
+          <span class="pgamesr-mobile-title mdl-layout-title">
+            <img class="pgamesr-logo-image" src="images/pgamesr-logo.png">
+          </span>
+          <button class="pgamesr-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button" title="Ingresar">
+            <i class="fa fa-sign-in"></i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+            <li class="mdl-menu__item">ingresar</li>
+            <li class="mdl-menu__item">cerrar sesión</li>
+          </ul>
         </div>
-        <button type="button" class="btn btn-success" id="buscar">Buscar</button>
-      <div class="thubmail well-lg" id="resultado">
+      </div>
 
+      <div class="pgamesr-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="pgamesr-logo-image" src="images/pgamesr-logo-white.png">
+        </span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">mis juegos</a>
+          <a class="mdl-navigation__link" href="">amigos</a>
+          <a class="mdl-navigation__link" href="">prestamos</a>
+          <div class="pgamesr-drawer-separator"></div>
+          <a class="mdl-navigation__link" href="api/">configuración</a>
+        </nav>
+      </div>
+
+      <div class="pgamesr-content mdl-layout__content">
+        <a name="top"></a>
+        <div class="pgamesr-be-together-section mdl-typography--text-center">
+          <div class="logo-font pgamesr-slogan">la mejor forma de jugar juegos</div>
+          <div class="logo-font pgamesr-sub-slogan">...necesitas ingresar al sistema</div>
+          <div class="logo-font pgamesr-create-character">
+            <a href=""><img src="images/bower.png"> crear cuenta</a>
+          </div>
+
+          <a href="#screens">
+            <button class="pgamesr-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+              <i class="material-icons">expand_more</i>
+            </button>
+          </a>
+        </div>
+        <div class="pgamesr-screen-section mdl-typography--text-center">
+          <a name="screens"></a>
+          <div class="mdl-typography--display-1-color-contrast">Juegos populares</div>
+          <div class="pgamesr-screens">
+
+            <div class="carousel">
+
+            </div>
+
+          </div>
+        </div>
+        <div class="pgamesr-wear-section">
+          <div class="pgamesr-wear-band">
+            <div class="pgamesr-wear-band-text">
+              <div class="mdl-typography--display-2 mdl-typography--font-thin">La mejor forma de divertirte</div>
+              <p class="mdl-typography--headline mdl-typography--font-thin">
+                Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pgamesr-customized-section">
+          <div class="pgamesr-customized-section-text">
+            <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Platformas</div>
+            <div class="pgamesr-screens">
+              <div class="plataformas">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="pgamesr-more-section">
+          <div class="pgamesr-section-title mdl-typography--display-1-color-contrast">Funcionalidades</div>
+          <div class="pgamesr-card-container mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <i class="fa fa-list-ol fa-5x" aria-hidden="true"></i>
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Lista tus juegos</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias </span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="pgamesr-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="#link">
+                   ver mis juegos
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <i class="fa fa-users fa-5x" aria-hidden="true"></i>
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Amigos que tienen tus juegos</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias </span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="pgamesr-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="#link">
+                   mis amigos
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <i class="fa fa-sun-o fa-5x" aria-hidden="true"></i>
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">El clima & juegos</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias </span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="pgamesr-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="#link">
+                   ver juegos
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <i class="fa fa-facebook fa-5x" aria-hidden="true"></i>
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Compartir en facebook</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias </span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="pgamesr-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="#link">
+                   facebook
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="pgamesr-footer mdl-mega-footer">
+          <div class="mdl-mega-footer--top-section">
+            <div class="mdl-mega-footer--right-section">
+              <a class="mdl-typography--font-light" href="#top">
+                Subir
+                <i class="material-icons">expand_less</i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mdl-mega-footer--middle-section">
+            <p class="mdl-typography--font-light">Nuevas Técnicas de Programación: © 2016 Andrea,Ricardo,Sebastian</p>
+            <p class="mdl-typography--font-light">Pontificia Universisdad Católica del Ecuador</p>
+          </div>
+        </footer>
       </div>
     </div>
-
+    <script src="js/material.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/index.js"></script>
   </body>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"  ></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"  ></script>
-  <script src="js/api.js"  ></script>
 </html>
