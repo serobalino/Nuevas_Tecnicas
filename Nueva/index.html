@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ingreso al sistema</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel='stylesheet prefetch' href='css/materialize.min.css'>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <body>
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form">
+        <div class="row">
+              <h2 class="header">Ingreso al sistema</h2>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mail_outline</i>
+            <input class="validate" id="email" type="text">
+            <label for="email" data-error="error" data-success="correco">usuarios</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock_outline</i>
+            <input id="password" type="password">
+            <label for="password">contrasaeña</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Recordar</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="main.html#login" class="btn waves-effect waves-light col s12 black">Ingresar</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small">ingreso con <a href="main.html#login">facebook</a></p>
+          </div>
+          <!--
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
+          </div>
+        -->
+        </div>
+
+      </form>
+    </div>
+  </div> </body>
+  <script src='js/jquery.min.js'></script>
+  <script src='js/materialize.min.js'></script>
+</body>
+</html>
